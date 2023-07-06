@@ -18,14 +18,14 @@ import styles from './popularjobs.style';
 import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 import { isLoaded } from 'expo-font';
 import useFetch from '../../../hook/useFetch';
+import { useRouter } from 'expo-router';
 const Popularjobs = () => {
-
- const {data,isloading,error}= useFetch('search',{
-  query: 'react developer',
+ const router=useRouter()
+ const {data,isLoading,error}= useFetch('search',{
+  query: 'React developer',
   page: '1',
   num_pages: '1',
 })
-
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
@@ -35,16 +35,16 @@ const Popularjobs = () => {
 				</TouchableOpacity>
 			</View>
 				<View style={styles.cardsContainer}>
-					{isloading ? (
+					{isLoading ? (
 						<ActivityIndicator size='large' color={COLORS.primary} />
 					) : error ? (
 						<Text>Something went wrong</Text>
 					) : (
 						<FlatList
-							data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+							data={data}
 							keyExtractor={(item) => item?.job_id}
-              contentContainerStyle={{ columnGap: SIZES.small  }}
-							renderItem={(item) => <PopularJobCard item={item} />}
+              contentContainerStyle={{ columnGap: SIZES.medium  }}
+							renderItem={({item}) => <PopularJobCard item={item} handeleNavigate={() => router.push(`/job-details/${job?.job_id}`)}/>}
               horizontal
 						/>
 					)}
