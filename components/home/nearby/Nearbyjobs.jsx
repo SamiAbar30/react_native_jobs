@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import {
 	images,
@@ -13,13 +13,10 @@ import { isLoaded } from 'expo-font';
 import useFetch from '../../../hook/useFetch';
 import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard';
 import { useRouter } from 'expo-router';
-const Nearbyjobs = () => {
+const Nearbyjobs = ({data,isLoading,error}) => {
 	const router = useRouter();
-	const { data, isLoading, error } = useFetch('search', {
-		query: 'react developer',
-		page: '1',
-		num_pages: '1',
-	});
+
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>

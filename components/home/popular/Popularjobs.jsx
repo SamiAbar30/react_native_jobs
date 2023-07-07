@@ -19,13 +19,9 @@ import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 import { isLoaded } from 'expo-font';
 import useFetch from '../../../hook/useFetch';
 import { useRouter } from 'expo-router';
-const Popularjobs = () => {
+const Popularjobs = ({data,isLoading,error}) => {
  const router=useRouter()
- const {data,isLoading,error}= useFetch('search',{
-  query: 'React developer',
-  page: '1',
-  num_pages: '1',
-})
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>

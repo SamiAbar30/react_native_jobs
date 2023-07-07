@@ -5,7 +5,7 @@ import styles from './nearbyjobcard.style'
 import { checkImageURL } from '../../../../utils';
 
 
-const NearbyJobCard = ({ job, key, handeleNavigate }) => {
+const NearbyJobCard = ({ job, handeleNavigate }) => {
  
 	return (
 		<TouchableOpacity
